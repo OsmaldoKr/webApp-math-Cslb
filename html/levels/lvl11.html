@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Math - Level 11</title>
+    <link rel="stylesheet" href="/css/levels/lvl11.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kids Math - Level 11</h1>
+        <div class="problem" id="problem"></div>
+        <input type="number" id="userAnswer" placeholder="Ingrese su respuesta">
+        <button id="calculateBtn" onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+        <button id="NextLevel" onclick="nextLevel()">Siguiente Nivel</button>
+        <button id="exitBtn" onclick="goToIndex()">Salir</button>
+    </div>
+
+    <script>
+        function generateProblem() {
+            const operators = ['+', '-', '*', '/'];
+            const operator = operators[Math.floor(Math.random() * operators.length)];
+            let num1, num2;
+            if (operator === '+') {
+                num1 = Math.floor(Math.random() * 100);
+                num2 = Math.floor(Math.random() * 100);
+            } else if (operator === '-') {
+                num1 = Math.floor(Math.random() * 100);
+                num2 = Math.floor(Math.random() * num1);
+            } else if (operator === '*') {
+                num1 = Math.floor(Math.random() * 20);
+                num2 = Math.floor(Math.random() * 20);
+            } else if (operator === '/') {
+                num2 = Math.floor(Math.random() * 10) + 1; // Avoid division by zero
+                num1 = num2 * Math.floor(Math.random() * 10);
+            }
+            document.getElementById('problem').textContent = `Resuelve: ${num1} ${operator} ${num2}`;
+            document.getElementById('userAnswer').value = '';
+        }
+
+        function calculate() {
+            const userAnswer = parseFloat(document.getElementById('userAnswer').value);
+            const problemText = document.getElementById('problem').textContent;
+            const operator = problemText.match(/[\+\-\*\/]/)[0];
+            const nums = problemText.split(operator).map(num => parseInt(num.trim()));
+            const correctAnswer = eval(problemText);
+            const resultDiv = document.getElementById('result');
+            if (userAnswer === correctAnswer) {
+                resultDiv.textContent = '¡Correcto!';
+            } else {
+                resultDiv.textContent = `Incorrecto. La respuesta correcta es ${correctAnswer}.`;
+            }
+        }
+
+        function goToIndex() {
+            window.location.href = "../../index.html"; // Redirigir al usuario al index
+        }
+
+        function nextLevel() {
+            window.location.href = "./lvl12.html"; // Redirigir al usuario al siguiente nivel
+        }
+
+        // Generar el problema al cargar la página
+        window.onload = generateProblem;
+    </script>
+</body>
+</html>

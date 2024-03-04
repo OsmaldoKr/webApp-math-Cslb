@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Math - Level 5</title>
+    <link rel="stylesheet" href="/css/levels/lvl5.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kids Math - Level 5</h1>
+        <div class="problem">
+            <p>Si una caja contiene 24 paquetes de galletas, y cada paquete tiene 6 galletas, ¿cuántas galletas hay en total?</p>
+        </div>
+        <input type="number" id="userAnswer" placeholder="Ingrese su respuesta">
+        <button id="calculateBtn" onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+        <button id="NextLevel" onclick="nextLevel()">Siguiente Nivel</button>
+        <button id="exitBtn" onclick="goToIndex()">Salir</button>
+    </div>
+
+    <script>
+        function calculate() {
+            const userAnswer = parseInt(document.getElementById('userAnswer').value);
+            const correctAnswer = 24 * 6;
+            const resultDiv = document.getElementById('result');
+            if (userAnswer === correctAnswer) {
+                resultDiv.textContent = '¡Correcto!';
+            } else {
+                resultDiv.textContent = 'Incorrecto. La respuesta correcta es ' + correctAnswer + '.';
+            }
+        }
+
+        function goToIndex() {
+            window.location.href = "../../index.html"; // Redirigir al usuario al index
+        }
+
+        function nextLevel() {
+            window.location.href = "./lvl6.html"; // Redirigir al usuario al siguiente nivel
+        }
+    </script>
+</body>
+</html>

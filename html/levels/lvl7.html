@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Math - Level 7</title>
+    <link rel="stylesheet" href="/css/levels/lvl7.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kids Math - Level 7</h1>
+        <div class="problem">
+            <p>Si un paquete de 6 latas de refresco cuesta $4, ¿cuánto cuesta cada lata de refresco?</p>
+        </div>
+        <input type="number" id="userAnswer" placeholder="Ingrese su respuesta">
+        <button id="calculateBtn" onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+        <button id="NextLevel" onclick="nextLevel()">Siguiente Nivel</button>
+        <button id="exitBtn" onclick="goToIndex()">Salir</button>
+    </div>
+
+    <script>
+        function calculate() {
+            const userAnswer = parseFloat(document.getElementById('userAnswer').value);
+            const correctAnswer = 4 / 6;
+            const resultDiv = document.getElementById('result');
+            if (userAnswer === correctAnswer) {
+                resultDiv.textContent = '¡Correcto!';
+            } else {
+                resultDiv.textContent = 'Incorrecto. La respuesta correcta es $' + correctAnswer.toFixed(2) + ' por lata.';
+            }
+        }
+
+        function goToIndex() {
+            window.location.href = "../../index.html"; // Redirigir al usuario al index
+        }
+
+        function nextLevel() {
+            window.location.href = "./lvl8.html"; // Redirigir al usuario al siguiente nivel
+        }
+    </script>
+</body>
+</html>
